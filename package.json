@@ -1,7 +1,7 @@
 {
 	"name": "php-class-generator",
 	"displayName": "PHP Class Generator",
-	"description": "Generate PHP classes",
+	"description": "VSCode Extenstion to Generate PHP PSR-4 Classes",
 	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.45.0"
@@ -10,7 +10,7 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:php-class-generator.generate"
+		"onCommand:phpClassGenerator.generateClass"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -29,6 +29,25 @@
 		"pretest": "npm run compile && npm run lint",
 		"test": "node ./out/test/runTest.js"
 	},
+	"keywords": [
+		"php",
+		"class",
+		"generate",
+		"composer",
+		"psr-4"
+	],
+	"icon": "images/logo.png",
+	"author": "Damian Balandowski <balandowski@icloud.com>",
+	"license": "MIT",
+	"galleryBanner": {
+		"color": "#6682BA",
+		"theme": "dark"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/damian-bal/php-class-generator.git"
+	},
+	"publisher": "damianbal",
 	"devDependencies": {
 		"@types/glob": "^7.1.1",
 		"@types/mocha": "^7.0.2",

@@ -1,9 +1,6 @@
 # Change Log
+All notable changes to the "PHP Class Generator" extension will be documented in this file.
 
-All notable changes to the "php-class-generator" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
-## [Unreleased]
-
-- Initial release
+## [1.0.0]
+- Rewritten with TypeScript
+- Works with Composer (PSR-4)
