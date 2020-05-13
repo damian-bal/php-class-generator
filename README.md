@@ -1,4 +1,4 @@
-# PHP Class Generator
+# PHP Class Generator (Composer PSR-4)
 
 VS Code extension which helps creating PHP classes.
 

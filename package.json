@@ -1,5 +1,5 @@
 {
-	"name": "php-class-generator",
+	"name": "php-class-generator-composer-psr-4",
 	"displayName": "PHP Class Generator",
 	"description": "VSCode Extenstion to Generate PHP PSR-4 Classes",
 	"version": "1.0.0",
