@@ -17,7 +17,7 @@
 		"commands": [
 			{
 				"command": "phpClassGenerator.generateClass",
-				"title": "PHP Class Generator: Generate class (PSR-4)"
+				"title": "PHP Class Generator: Generate Class (Wizard)"
 			}
 		]
 	},

@@ -30,7 +30,7 @@ export function activate(context: vscode.ExtensionContext) {
 						canSelectFiles: false,
 						canSelectFolders: true,
 						canSelectMany: false,
-						openLabel: "Select folder"
+						openLabel: "Select folder where new class should be placed"
 					}
 				);
 
@@ -75,28 +75,9 @@ export function activate(context: vscode.ExtensionContext) {
 				const newFilePath = path.join(folder[0].fsPath, name) + ".php";
 				fs.writeFileSync(newFilePath, generatePhpFileContent({ name, type, namespace }));
 
-				const openPath = vscode.Uri.file(newFilePath);
-				vscode.workspace.openTextDocument(openPath).then(doc => {
+				vscode.workspace.openTextDocument(vscode.Uri.file(newFilePath)).then(doc => {
 					vscode.window.showTextDocument(doc);
 				});
-			}
-		)
-	);
-
-	context.subscriptions.push(
-		vscode.commands.registerCommand(
-			'phpClassGenerator.insertNamespace',
-			async () => {
-
-			}
-		)
-	);
-
-	context.subscriptions.push(
-		vscode.commands.registerCommand(
-			'phpClassGenerator.insertClass',
-			async () => {
-
 			}
 		)
 	);
