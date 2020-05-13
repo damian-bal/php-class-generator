@@ -29,7 +29,16 @@
 				"command": "phpClassGenerator.insertClass",
 				"title": "PHP Class Generator: Insert PSR-4 class/interface/trait"
 			}
-		]
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"command": "phpClassGenerator.insertNamespace",
+					"group": "phpClassGenerator",
+					"when": "editorTextFocus"
+				}
+			]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
