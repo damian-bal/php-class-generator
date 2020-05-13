@@ -15,7 +15,14 @@ export function activate(context: vscode.ExtensionContext) {
 					return;
 				}
 
-				const root = vscode.workspace.rootPath;
+				let root = null;
+				if (vscode.workspace.workspaceFolders) {
+					root = vscode.workspace.workspaceFolders[0].uri.fsPath;
+				}
+
+				if (!root) {
+					return;
+				}
 
 				let composerDocument = null;
 				try {
@@ -35,6 +42,11 @@ export function activate(context: vscode.ExtensionContext) {
 				);
 
 				if (!folder) {
+					return;
+				}
+
+				if (folder[0] && folder[0].fsPath.split(path.sep).indexOf(vscode.workspace.name ?? '') === -1) {
+					vscode.window.showErrorMessage("Wrong folder!");
 					return;
 				}
 
@@ -95,7 +107,14 @@ export function activate(context: vscode.ExtensionContext) {
 					return;
 				}
 
-				const root = vscode.workspace.rootPath;
+				let root = null;
+				if (vscode.workspace.workspaceFolders) {
+					root = vscode.workspace.workspaceFolders[0].uri.fsPath;
+				}
+
+				if (!root) {
+					return;
+				}
 
 				let namespacePathSegments = vscode.window.activeTextEditor.document.fileName.split(path.sep);
 				namespacePathSegments.pop();
@@ -140,7 +159,14 @@ export function activate(context: vscode.ExtensionContext) {
 					return;
 				}
 
-				const root = vscode.workspace.rootPath;
+				let root = null;
+				if (vscode.workspace.workspaceFolders) {
+					root = vscode.workspace.workspaceFolders[0].uri.fsPath;
+				}
+
+				if (!root) {
+					return;
+				}
 
 				let namespacePathSegments = vscode.window.activeTextEditor.document.fileName.split(path.sep);
 				const name = namespacePathSegments.pop()?.replace('.php', '');
