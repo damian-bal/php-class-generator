@@ -10,14 +10,24 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:phpClassGenerator.generateClass"
+		"onCommand:phpClassGenerator.generateClass",
+		"onCommand:phpClassGenerator.insertNamespace",
+		"onCommand:phpClassGenerator.insertClass"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
 				"command": "phpClassGenerator.generateClass",
-				"title": "PHP Class Generator: Generate Class (Wizard)"
+				"title": "PHP Class Generator: Generate class/interface/trait (Wizard)"
+			},
+			{
+				"command": "phpClassGenerator.insertNamespace",
+				"title": "PHP Class Generator: Insert PSR-4 namespace"
+			},
+			{
+				"command": "phpClassGenerator.insertClass",
+				"title": "PHP Class Generator: Insert PSR-4 class/interface/trait"
 			}
 		]
 	},
