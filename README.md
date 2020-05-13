@@ -4,7 +4,7 @@ VS Code extension which helps creating PHP classes in project which is configure
 
 > Note: composer.json (with PSR-4 autoloading configured) file is required in project (workspace).
 
-Old version of this extension can be found [here](https://marketplace.visualstudio.com/items?itemName=damianbal.vs-phpclassgen) but it did not support PSR-4.
+Old version of this extension can be found [here](https://marketplace.visualstudio.com/items?itemName=damianbal.vs-phpclassgen) but it doesn't support PSR-4.
 
 ## Demo
 
