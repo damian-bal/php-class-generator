@@ -45,7 +45,7 @@ export function activate(context: vscode.ExtensionContext) {
 					return;
 				}
 
-				if (folder[0] && folder[0].fsPath.split(path.sep).indexOf(vscode.workspace.name ?? '') === -1) {
+				if (!vscode.workspace.getWorkspaceFolder(folder[0])) {
 					vscode.window.showErrorMessage("Wrong folder!");
 					return;
 				}
