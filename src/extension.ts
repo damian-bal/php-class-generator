@@ -32,6 +32,7 @@ export function activate(context: vscode.ExtensionContext) {
 				const root: string | null | undefined = vscode.workspace.getWorkspaceFolder(folder[0])?.uri.fsPath;
 
 				if (!root) {
+					vscode.window.showErrorMessage("Wrong folder!");
 					return;
 				}
 
@@ -74,8 +75,14 @@ export function activate(context: vscode.ExtensionContext) {
 					return;
 				}
 
+				const namespacePathSegments = vscode.workspace.asRelativePath(folder[0].fsPath).split(path.sep);
+
+				if (vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders?.length > 1) {
+					namespacePathSegments.splice(0, 1);
+				}
+
 				const namespaceResolver: NamespaceResolver = new ComposerNamespaceResolver(composerDocument.getText());
-				const namespace = namespaceResolver.resolve(vscode.workspace.asRelativePath(folder[0].fsPath).split(path.sep));
+				const namespace = namespaceResolver.resolve(namespacePathSegments);
 
 				if (!namespace) {
 					vscode.window.showErrorMessage("Problem with resolving namespace!");
@@ -110,12 +117,17 @@ export function activate(context: vscode.ExtensionContext) {
 				)?.uri.fsPath;
 
 				if (!root) {
+					vscode.window.showErrorMessage("Wrong folder!");
 					return;
 				}
 
 				let namespacePathSegments = vscode.window.activeTextEditor.document.fileName.split(path.sep);
 				namespacePathSegments.pop();
 				namespacePathSegments = vscode.workspace.asRelativePath(namespacePathSegments.join(path.sep)).split(path.sep);
+
+				if (vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders?.length > 1) {
+					namespacePathSegments.splice(0, 1);
+				}
 
 				let composerDocument = null;
 				try {
@@ -161,12 +173,17 @@ export function activate(context: vscode.ExtensionContext) {
 				)?.uri.fsPath;
 
 				if (!root) {
+					vscode.window.showErrorMessage("Wrong folder!");
 					return;
 				}
 
 				let namespacePathSegments = vscode.window.activeTextEditor.document.fileName.split(path.sep);
 				const name = namespacePathSegments.pop()?.replace('.php', '');
 				namespacePathSegments = vscode.workspace.asRelativePath(namespacePathSegments.join(path.sep)).split(path.sep);
+
+				if (vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders?.length > 1) {
+					namespacePathSegments.splice(0, 1);
+				}
 
 				let composerDocument = null;
 				try {
