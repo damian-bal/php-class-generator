@@ -10,27 +10,11 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.registerCommand(
 			'phpClassGenerator.generateClass',
 			async () => {
-				if (!vscode.workspace && !vscode.workspace.name) {
+				if (!vscode.workspace) {
 					vscode.window.showWarningMessage("You need to have a workspace open!");
 					return;
 				}
 
-				let root = null;
-				if (vscode.workspace.workspaceFolders) {
-					root = vscode.workspace.workspaceFolders[0].uri.fsPath;
-				}
-
-				if (!root) {
-					return;
-				}
-
-				let composerDocument = null;
-				try {
-					composerDocument = await vscode.workspace.openTextDocument(root + path.sep + 'composer.json');
-				} catch (error) {
-					vscode.window.showErrorMessage("Problem reading composer.json file!");
-					return;
-				}
 
 				const folder = await vscode.window.showOpenDialog(
 					{
@@ -42,6 +26,20 @@ export function activate(context: vscode.ExtensionContext) {
 				);
 
 				if (!folder) {
+					return;
+				}
+
+				const root: string | null | undefined = vscode.workspace.getWorkspaceFolder(folder[0])?.uri.fsPath;
+
+				if (!root) {
+					return;
+				}
+
+				let composerDocument = null;
+				try {
+					composerDocument = await vscode.workspace.openTextDocument(root + path.sep + 'composer.json');
+				} catch (error) {
+					vscode.window.showErrorMessage("Problem reading composer.json file!");
 					return;
 				}
 
@@ -102,15 +100,14 @@ export function activate(context: vscode.ExtensionContext) {
 					return;
 				}
 
-				if (!vscode.workspace && !vscode.workspace.name) {
+				if (!vscode.workspace) {
 					vscode.window.showWarningMessage("You need to have a workspace open!");
 					return;
 				}
 
-				let root = null;
-				if (vscode.workspace.workspaceFolders) {
-					root = vscode.workspace.workspaceFolders[0].uri.fsPath;
-				}
+				const root: string | null | undefined = vscode.workspace.getWorkspaceFolder(
+					vscode.window.activeTextEditor.document.uri
+				)?.uri.fsPath;
 
 				if (!root) {
 					return;
@@ -154,15 +151,14 @@ export function activate(context: vscode.ExtensionContext) {
 					return;
 				}
 
-				if (!vscode.workspace && !vscode.workspace.name) {
+				if (!vscode.workspace) {
 					vscode.window.showWarningMessage("You need to have a workspace open!");
 					return;
 				}
 
-				let root = null;
-				if (vscode.workspace.workspaceFolders) {
-					root = vscode.workspace.workspaceFolders[0].uri.fsPath;
-				}
+				const root: string | null | undefined = vscode.workspace.getWorkspaceFolder(
+					vscode.window.activeTextEditor.document.uri
+				)?.uri.fsPath;
 
 				if (!root) {
 					return;
