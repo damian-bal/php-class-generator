@@ -4,7 +4,7 @@
 	"description": "VSCode Extenstion to Generate PHP PSR-4 Classes",
 	"version": "1.0.1",
 	"engines": {
-		"vscode": "^1.45.0"
+		"vscode": "^1.45.1"
 	},
 	"categories": [
 		"Other"
