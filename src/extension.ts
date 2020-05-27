@@ -75,7 +75,7 @@ export function activate(context: vscode.ExtensionContext) {
 					return;
 				}
 
-				const namespacePathSegments = vscode.workspace.asRelativePath(folder[0].fsPath).split(path.sep);
+				const namespacePathSegments = vscode.workspace.asRelativePath(folder[0].fsPath).split('/');
 
 				if (vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders?.length > 1) {
 					namespacePathSegments.splice(0, 1);
@@ -121,9 +121,9 @@ export function activate(context: vscode.ExtensionContext) {
 					return;
 				}
 
-				let namespacePathSegments = vscode.window.activeTextEditor.document.fileName.split(path.sep);
+				let namespacePathSegments = path.normalize(vscode.window.activeTextEditor.document.fileName).split(path.sep);
 				namespacePathSegments.pop();
-				namespacePathSegments = vscode.workspace.asRelativePath(namespacePathSegments.join(path.sep)).split(path.sep);
+				namespacePathSegments = vscode.workspace.asRelativePath(namespacePathSegments.join(path.sep)).split('/');
 
 				if (vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders?.length > 1) {
 					namespacePathSegments.splice(0, 1);
@@ -177,9 +177,9 @@ export function activate(context: vscode.ExtensionContext) {
 					return;
 				}
 
-				let namespacePathSegments = vscode.window.activeTextEditor.document.fileName.split(path.sep);
+				let namespacePathSegments = path.normalize(vscode.window.activeTextEditor.document.fileName).split(path.sep);
 				const name = namespacePathSegments.pop()?.replace('.php', '');
-				namespacePathSegments = vscode.workspace.asRelativePath(namespacePathSegments.join(path.sep)).split(path.sep);
+				namespacePathSegments = vscode.workspace.asRelativePath(namespacePathSegments.join(path.sep)).split('/');
 
 				if (vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders?.length > 1) {
 					namespacePathSegments.splice(0, 1);
