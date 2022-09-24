@@ -1,3 +1,3 @@
 export interface NamespaceResolver {
-    resolve(pathSegments: string[]): string | null;
+    resolve(pathSegments: string[], addPath: string): string | null;
 }

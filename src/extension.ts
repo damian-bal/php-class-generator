@@ -36,9 +36,15 @@ export function activate(context: vscode.ExtensionContext) {
 					return;
 				}
 
+				const composerJsonLocation = String(vscode.workspace
+					.getConfiguration('phpClassGenerator')
+					.get('composerJsonLocation'));
+
+				const composerDir = path.dirname(composerJsonLocation) + path.sep;
+
 				let composerDocument = null;
 				try {
-					composerDocument = await vscode.workspace.openTextDocument(root + path.sep + 'composer.json');
+					composerDocument = await vscode.workspace.openTextDocument(root + path.sep + composerJsonLocation);
 				} catch (error) {
 					vscode.window.showErrorMessage("Problem reading composer.json file!");
 					return;
@@ -82,7 +88,7 @@ export function activate(context: vscode.ExtensionContext) {
 				}
 
 				const namespaceResolver: NamespaceResolver = new ComposerNamespaceResolver(composerDocument.getText());
-				const namespace = namespaceResolver.resolve(namespacePathSegments);
+				const namespace = namespaceResolver.resolve(namespacePathSegments, composerDir);
 
 				if (!namespace) {
 					vscode.window.showErrorMessage("Problem with resolving namespace!");
@@ -129,9 +135,15 @@ export function activate(context: vscode.ExtensionContext) {
 					namespacePathSegments.splice(0, 1);
 				}
 
+				const composerJsonLocation = String(vscode.workspace
+					.getConfiguration('phpClassGenerator')
+					.get('composerJsonLocation'));
+
+				const composerDir = path.dirname(composerJsonLocation) + path.sep;
+
 				let composerDocument = null;
 				try {
-					composerDocument = await vscode.workspace.openTextDocument(root + path.sep + 'composer.json');
+					composerDocument = await vscode.workspace.openTextDocument(root + path.sep + composerJsonLocation);
 				} catch (error) {
 					console.error(error);
 					vscode.window.showErrorMessage("Problem reading composer.json file!");
@@ -139,7 +151,7 @@ export function activate(context: vscode.ExtensionContext) {
 				}
 
 				const namespaceResolver: NamespaceResolver = new ComposerNamespaceResolver(composerDocument.getText());
-				const namespace = namespaceResolver.resolve(namespacePathSegments);
+				const namespace = namespaceResolver.resolve(namespacePathSegments, composerDir);
 
 				if (!namespace) {
 					vscode.window.showErrorMessage("Problem with resolving namespace!");
@@ -185,9 +197,15 @@ export function activate(context: vscode.ExtensionContext) {
 					namespacePathSegments.splice(0, 1);
 				}
 
+				const composerJsonLocation = String(vscode.workspace
+					.getConfiguration('phpClassGenerator')
+					.get('composerJsonLocation'));
+
+				const composerDir = path.dirname(composerJsonLocation) + path.sep;
+
 				let composerDocument = null;
 				try {
-					composerDocument = await vscode.workspace.openTextDocument(root + path.sep + 'composer.json');
+					composerDocument = await vscode.workspace.openTextDocument(root + path.sep + composerJsonLocation);
 				} catch (error) {
 					console.error(error);
 					vscode.window.showErrorMessage("Problem reading composer.json file!");
@@ -195,7 +213,7 @@ export function activate(context: vscode.ExtensionContext) {
 				}
 
 				const namespaceResolver: NamespaceResolver = new ComposerNamespaceResolver(composerDocument.getText());
-				const namespace = namespaceResolver.resolve(namespacePathSegments);
+				const namespace = namespaceResolver.resolve(namespacePathSegments, composerDir);
 
 				if (!namespace) {
 					vscode.window.showErrorMessage("Problem with resolving namespace!");

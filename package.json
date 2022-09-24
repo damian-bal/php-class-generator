@@ -38,6 +38,16 @@
 					"when": "editorTextFocus && resourceLangId == php"
 				}
 			]
+		},
+		"configuration": {
+			"title": "PHP Class Generator (Composer PSR-4)",
+			"properties": {
+				"phpClassGenerator.composerJsonLocation": {
+					"type": "string",
+					"default": "composer.json",
+					"description": "Location of composer.json file related to project root"
+				}
+			}
 		}
 	},
 	"scripts": {

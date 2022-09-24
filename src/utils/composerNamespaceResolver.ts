@@ -56,9 +56,9 @@ export class ComposerNamespaceResolver implements NamespaceResolver {
         }
     }
 
-    resolve(pathSegments: string[]): string | null {
+    resolve(pathSegments: string[], addPath: string): string | null {
         const fullPath = pathSegments.join('/');
-        const matchingPsr4 = this.psr4.find(psr4 => fullPath.startsWith(psr4.path));
+        const matchingPsr4 = this.psr4.find(psr4 => fullPath.startsWith(addPath + psr4.path));
 
         if (!matchingPsr4) {
             return null;

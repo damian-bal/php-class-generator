@@ -35,3 +35,6 @@ Old version of this extension can be found [here](https://marketplace.visualstud
 - "PHP Class Generator: Generate class/interface/trait (Wizard)"
 - "PHP Class Generator: Insert PSR-4 namespace"
 - "PHP Class Generator: Insert PSR-4 class/interface/trait"
+
+## Settings
+- `phpClassGenerator.composerJsonLocation` - Specify where composer.json file is located. Defaults: `composer.json`
